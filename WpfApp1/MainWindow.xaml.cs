@@ -24,7 +24,7 @@ namespace WpfApp1
             InitializeComponent();
         }
 
-
+        /* ComboBox Example
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string newText = textBox.Text.Trim();
@@ -36,8 +36,34 @@ namespace WpfApp1
                 textBox.Text = string.Empty;
             }
         }
+        */
 
-        /*
+        /* Data Binding Example */
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // You can add any additional logic here if needed
+            // For example, you can change the background color of the button based on the text entered in the TextBox
+            if (sender is Button button)
+            {
+                if (button.DataContext is TextBox textBox)
+                {
+                    // Set the background color of the button to the color entered in the TextBox (assuming it's a valid color string)
+                    try
+                    {
+                        Color color = (Color)ColorConverter.ConvertFromString(textBox.Text);
+
+                        // Set the background color of the button to the color entered in the TextBox
+                        button.Background = new SolidColorBrush(color);
+                    }
+                    catch (FormatException)
+                    {
+                        MessageBox.Show("Invalid color format!");
+                    }
+                }
+            }
+        }
+
+        /* Color Buttons
         private void ToRedOnHover(object sender, RoutedEventArgs e)
         {
             Button ToRed = FindName("ToRed") as Button;

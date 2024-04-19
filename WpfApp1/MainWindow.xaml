@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="500">
-    
-    <!--
+
+    <!-- Color Buttons Example
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="HorizontalAlignment" Value ="Center" />
@@ -16,7 +16,7 @@
         </Style>
     </Window.Resources>
     -->
-    
+
     <!-- Fundamentals -->
     <!--  Overview 
             In markup the window element must include the x:Class atrribute. it is necessary because when it app is build, the existence
@@ -51,8 +51,8 @@
         </Button>
     </StackPanel>
     -->
-    
-    <!-- Combo Box Example -->
+
+    <!-- Combo Box Example
     <Grid>
         
         <TextBox x:Name="textBox" Width="200" Height="30" VerticalAlignment="Top" Margin="0,10,0,0" />
@@ -62,6 +62,33 @@
         <ComboBox x:Name="comboBox" Width="200" Height="30" SelectedIndex="0" Margin="9, 0, 0, 250"
                   TabIndex="0" IsDropDownOpen="True" IsSynchronizedWithCurrentItem="False"/>
 
+    </Grid>
+    -->
+
+    <!-- Data Binding Example -->
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="483*"/>
+            <ColumnDefinition Width="17*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.DataContext>
+            <Binding Source="StaticResource textBox" />
+        </Grid.DataContext>
+
+        <TextBox x:Name="textBox" Width="200" Height="30" VerticalAlignment="Top" Margin="150,40,133,0"
+                 Background="LightYellow" />
+
+        <Button x:Name="ColorButton" Content="OneWay Binding" Width="200" Height="30" VerticalAlignment="Top" Margin="150,80,133,0" 
+                Background="{Binding ElementName=textBox, Path=Text, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                />
+        <TextBox x:Name="textBox2" Width="200" Height="30" VerticalAlignment="Top" Margin="150,150,133,0"
+                 Background="{Binding ElementName=ColorButton2, Path=Background, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Button x:Name="ColorButton2" Content="TwoWay Binding" Width="200" Height="30" VerticalAlignment="Top" Margin="150,190,133,0" 
+                Background="{Binding ElementName=textBox2, Path=Text, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                />
     </Grid>
 
 </Window>
