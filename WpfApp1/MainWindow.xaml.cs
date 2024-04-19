@@ -1,4 +1,5 @@
 ﻿using System.Collections.Specialized;
+using System.Reflection;
 using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Windows;
@@ -23,15 +24,38 @@ namespace WpfApp1
             InitializeComponent();
         }
 
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string newText = textBox.Text.Trim();
+
+            if (!string.IsNullOrEmpty(newText))
+            {
+                comboBox.Items.Add(textBox.Text);
+
+                textBox.Text = string.Empty;
+            }
+        }
+
+        /*
         private void ToRedOnHover(object sender, RoutedEventArgs e)
         {
+            Button ToRed = FindName("ToRed") as Button;
+            Button ToPurple = FindName("ToPurple") as Button;
+            Button ToWhite = FindName("ToWhite") as Button;
+
             ToRed.Background = Brushes.Red;
             ToPurple.Background = Brushes.Red;
             ToWhite.Background = Brushes.Red;
+
         }
 
         private void ToPurpleOnPress(object sender, RoutedEventArgs e)
         {
+            Button ToRed = FindName("ToRed") as Button;
+            Button ToPurple = FindName("ToPurple") as Button;
+            Button ToWhite = FindName("ToWhite") as Button;
+
             ToRed.Background = Brushes.Purple;
             ToPurple.Background = Brushes.Purple;
             ToWhite.Background = Brushes.Purple;
@@ -39,16 +63,29 @@ namespace WpfApp1
 
         private void OnMouseDown(object sender, MouseButtonEventArgs e)
         {
+            Button ToRed = FindName("ToRed") as Button;
+            Button ToPurple = FindName("ToPurple") as Button;
+            Button ToWhite = FindName("ToWhite") as Button;
+
             ToRed.Background = Brushes.White;
             ToPurple.Background = Brushes.White;
-            ((Button)sender).Background = Brushes.White;
+            ToWhite.Background = Brushes.White;
         }
         
         private void OnMouseUp(object sender, MouseButtonEventArgs e)
         {
+            Button ToRed = FindName("ToRed") as Button;
+            Button ToPurple = FindName("ToPurple") as Button;
+            Button ToWhite = FindName("ToWhite") as Button;
+
             ToRed.Background = Brushes.Black;
             ToPurple.Background = Brushes.Black;
-            ((Button)sender).Background = Brushes.Black;
+            ToWhite.Background = Brushes.Black;
         }
+        */
+
+
     }
+
 }
+
